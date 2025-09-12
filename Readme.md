@@ -1,0 +1,184 @@
+AlexPro – Professional MT5 Trading Bot
+
+Version: 1.0
+Platform: MetaTrader 5 (MT5)
+Developer: [Your Name]
+Date: 2025-09-12
+
+Overview
+
+AlexPro is a multi-timeframe, momentum- and trend-based Expert Advisor designed for professional traders seeking a balance between precision and flexibility. It incorporates advanced filtering, dynamic trade management, and a visual dashboard to provide real-time trade signals and actionable insights.
+
+AlexPro is built for both intrabar (tick-based) and closed candle signals, and it manages trades dynamically with risk controls, ATR-based stops, and partial exits.
+
+Core Features
+1. Signal Detection
+
+RSI-based trend bias:
+
+RSI(21) > 50 → bullish trend, RSI(21) < 50 → bearish trend.
+
+Moving averages alignment:
+
+MA(20) and MA(50) cross-confirmation.
+
+Multi-timeframe confirmation:
+
+M5 entry confirmed by M15 trend (RSI + MA alignment).
+
+Consecutive bullish/bearish candles confirmation.
+
+Signal alerts for momentum forming, weak signals, and confirmations.
+
+2. Trade Execution
+
+Market orders only.
+
+Lot size: fixed at 1 lot.
+
+ATR-based risk management:
+
+Stop-loss: 0.5 × ATR (15M).
+
+Take-profit: 1 × ATR (15M).
+
+Single and multiple trades management:
+
+Executes one trade per signal set.
+
+Can scale to additional trades if new confirmation occurs.
+
+Dynamic trade management:
+
+Partial close when floating profit ≥ 0.5 × TP and momentum fades.
+
+Trailing stop behind recent highs/lows (last 2–3 M5 bars).
+
+Adaptive stop-loss and take-profit recalculation based on recent price action.
+
+3. Filters & Safety Checks
+
+ATR filter:
+
+Minimum volatility required to execute trades (recommended 15–20 pips for M5).
+
+Support and resistance proximity:
+
+Avoids entries too close to recent swing highs/lows to prevent reversals.
+
+Higher timeframe trend confirmation (M15):
+
+RSI + MA alignment confirms direction.
+
+Momentum check:
+
+RSI slope check (rising/falling) to avoid entering fading trends.
+
+Session filters (planned):
+
+Option to trade only during London/New York sessions.
+
+Weak signal detection:
+
+Alerts for momentum forming but not confirmed yet.
+
+4. Dashboard / UI
+
+Visual panel on chart with colored labels and icons.
+
+Displays:
+
+RSI value & trend direction.
+
+MA alignment.
+
+ATR (M5) in pips.
+
+Signal direction (BUY / SELL / None) with icons.
+
+Active trades count.
+
+Status messages with filter reasons for blocked trades.
+
+Updated in real-time on every tick.
+
+5. Logging & Alerts
+
+Prints detailed logs to Experts tab:
+
+Trade execution.
+
+Blocked signals with reasoning (e.g., ATR too low, close to resistance).
+
+Momentum forming alerts.
+
+Optional notifications for pending signals.
+
+Pending Improvements / Future Features
+
+Multi-Timeframe Confluence Enhancements
+
+Include higher timeframes (H1, H4) for trend alignment.
+
+Filter trades against multi-timeframe market reversals.
+
+Volatility & News Filters
+
+Avoid trading during low ATR periods or high-impact news events.
+
+Adaptive Position Sizing
+
+Scale-in/out positions dynamically based on momentum or volatility.
+
+Session Filters
+
+Enable only London/NY trading sessions based on user's local time.
+
+Advanced Dashboard Enhancements
+
+Live trade info: entry price, SL, TP, floating PnL.
+
+Graphical support/resistance zones on chart.
+
+Momentum heatmap or trend strength visual.
+
+Trade Optimization
+
+Fine-tune confirmation bars, RSI periods, MA lengths.
+
+Integrate trailing stop adaptive logic for maximum profit capture.
+
+User Configurable Parameters
+
+Easy-to-adjust settings for ATR multiplier, MA periods, RSI period, number of confirming bars, lot size, and max trades per signal.
+
+Installation
+
+Copy AlexPro.mq5 and all module files into:
+
+MQL5/Experts/AlexPro/
+
+
+Compile the EA using MetaEditor.
+
+Attach AlexPro to your chart (M1/M5 recommended).
+
+Enable “AutoTrading”.
+
+Observe real-time dashboard updates and signals.
+
+Recommendations
+
+Testing: Always test in a demo account before live deployment.
+
+Risk: Even with advanced filters, market reversals can occur; manage risk accordingly.
+
+Timeframes: Entry on M5 confirmed by M15 trend is optimal; lower timeframes increase signal noise.
+
+References
+
+MetaTrader 5 Documentation: https://www.mql5.com/en/docs
+
+ATR and MA-based trading strategies.
+
+Multi-timeframe trend confirmation techniques.
